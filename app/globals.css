@@ -1,0 +1,270 @@
+/* Reset & Global Values */
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  display: inline-block;
+  width: fit-content;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+label,
+input,
+textarea {
+  display: inline-block;
+  width: fit-content;
+  background-color: inherit;
+  border: 0;
+  outline: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+picture {
+  display: block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  line-height: 1.5;
+}
+
+/* Screen Readers */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Fonts */
+
+/* Animations */
+
+/* Variables */
+
+/* Media Queries 48rem (Tablet) & 64rem (Laptop) */
+
+:root {
+  --blue: hsl(180, 66%, 49%);
+  --blue-hover: #99ffff;
+  --purple: hsl(257, 27%, 26%);
+  --red: hsl(0, 87%, 67%);
+  --white: #fff;
+  --black: #000;
+  --gray-400: hsl(0, 0%, 75%);
+  --gray-500: hsl(257, 7%, 63%);
+  --gray-900: hsl(255, 11%, 22%);
+  --gray-950: hsl(260, 8%, 14%);
+  --transition-duration: 0.3s;
+}
+
+/* Start Styling */
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 48rem) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.container {
+  width: min(95%, 1040px);
+  margin: 0 auto;
+}
+
+/* Header */
+
+.main-header {
+  padding: 20px 0;
+  background-color: var(--white);
+}
+
+.main-header-container,
+.main-header-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header-logo svg {
+  fill: var(--gray-950);
+}
+
+/* Navbar */
+
+/* Hamburger icon */
+.main-header-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 25px;
+  height: 20px;
+}
+
+.icon-line {
+  display: inline-block;
+  height: 4px;
+  width: 100%;
+  background-color: black;
+  transition: var(--transition-duration);
+}
+
+.main-header-icon.active .icon-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.main-header-icon.active .icon-line:nth-child(2) {
+  opacity: 0;
+}
+
+.main-header-icon.active .icon-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Nav links */
+.main-nav {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  transform: translate(-50%, 75px);
+  padding: 30px 20px;
+  background-color: var(--purple);
+  border-radius: 10px;
+  color: var(--white);
+  transition: var(--transition-duration);
+}
+
+.main-nav.active {
+  left: 50%;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  font-size: 1.125rem;
+}
+
+.main-nav a {
+  transition: var(--transition-duration);
+}
+
+.main-nav a:hover {
+  color: var(--gray-400);
+}
+
+.main-header-list-one {
+  padding-bottom: 25px;
+}
+
+.main-header-list-two {
+  padding-top: 25px;
+  border-top: 1px solid var(--gray-500);
+}
+
+.main-header .list-btn {
+  width: 100%;
+}
+
+.main-header .list-btn a {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--blue);
+  border-radius: 25px;
+  text-align: center;
+  transition: var(--transition-duration);
+}
+
+.main-header .list-btn a:hover {
+  background-color: var(--blue-hover);
+  color: var(--black);
+}
+
+@media (min-width: 48rem) {
+  .main-header-icon {
+    display: none;
+  }
+  .main-nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1.5rem;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    color: var(--gray-500);
+    transition: var(--transition-duration);
+  }
+  .main-nav.active {
+    left: 0;
+  }
+  .main-nav ul {
+    flex-direction: row;
+    padding: 0;
+    border: 0;
+    font-size: 1rem;
+  }
+  .main-header .list-btn a {
+    padding: 10px 20px;
+    background-color: var(--blue);
+    border-radius: 25px;
+    color: var(--white);
+    text-align: center;
+    transition: var(--transition-duration);
+  }
+}
+
+/* Footer */
+
+.main-footer {
+  background-color: var(--purple);
+  color: var(--white);
+  text-align: center;
+}
+
+.main-footer-logo svg {
+  fill: var(--white);
+}
