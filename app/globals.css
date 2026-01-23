@@ -42,7 +42,8 @@ button {
   cursor: pointer;
 }
 
-picture {
+picture,
+svg {
   display: block;
 }
 
@@ -260,11 +261,83 @@ html {
 /* Footer */
 
 .main-footer {
+  padding: 3.25rem 0;
   background-color: var(--purple);
   color: var(--white);
-  text-align: center;
 }
 
-.main-footer-logo svg {
+.main-footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.25rem;
+}
+
+.main-footer svg {
   fill: var(--white);
+  transition: var(--transition-duration);
+}
+
+.main-footer a {
+  transition: var(--transition-duration);
+}
+
+.main-footer-nav a:hover {
+  color: var(--blue);
+}
+
+.main-footer-nav,
+.main-footer-nav .nav-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-footer-nav {
+  gap: 2.65rem;
+}
+
+.main-footer-nav .nav-list {
+  gap: 0.85rem;
+}
+
+.main-footer-nav .list-title {
+  margin-bottom: 0.85rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+.main-footer .social-list a {
+  display: flex;
+}
+
+.main-footer .social-list a:hover svg {
+  fill: var(--blue);
+}
+
+@media (min-width: 48rem) {
+  .main-footer-container,
+  .main-footer-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .main-footer-container {
+    gap: 0;
+  }
+  .main-footer-nav {
+    margin: 0 auto;
+  }
+  .main-footer-nav .nav-list {
+    align-items: flex-start;
+  }
 }
