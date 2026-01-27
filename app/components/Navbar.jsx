@@ -7,7 +7,9 @@ function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <>
-      <button className={`main-header-icon ${isExpanded ? "active" : ""}`} onClick={() => setIsExpanded((prev) => !prev)}>
+      <button
+        className={`main-header-icon ${isExpanded ? "active" : ""}`}
+        onClick={() => setIsExpanded((prev) => !prev)}>
         <span className="icon-line"></span>
         <span className="icon-line"></span>
         <span className="icon-line"></span>
@@ -15,10 +17,10 @@ function Navbar() {
       <nav className={`container main-nav ${isExpanded ? "active" : ""}`}>
         <ul className="main-header-list-one">
           <li className="list-item">
-            <Link href="#">Features</Link>
+            <Link href="/features">Features</Link>
           </li>
           <li className="list-item">
-            <Link href="#">Prices</Link>
+            <Link href="/prices">Prices</Link>
           </li>
           <li className="list-item">
             <Link href="#">Resources</Link>
