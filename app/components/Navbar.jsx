@@ -23,15 +23,15 @@ function Navbar() {
             <Link href="/prices">Prices</Link>
           </li>
           <li className="list-item">
-            <Link href="#">Resources</Link>
+            <Link href="/resources">Resources</Link>
           </li>
         </ul>
         <ul className="main-header-list-two">
           <li className="list-item">
-            <Link href="#">Login</Link>
+            <Link href="#app">Login</Link>
           </li>
           <li className="list-btn">
-            <Link href="#">Sign Up</Link>
+            <Link href="#app">Sign Up</Link>
           </li>
         </ul>
       </nav>

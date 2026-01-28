@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 // URL validation
@@ -7,6 +8,18 @@ function isValidURL(url) {
   const regex = /^(https?:\/\/[a-zA-Z0-9.-]+(:\d+)?(\/[^\s?#]*)?)$/;
   return regex.test(url);
 }
+
+// Mask CleanUri link:
+const maskLink = (link) => {
+  const parts = link.split("/");
+  const slug = parts.pop(); // Get "vPQ4gm"
+  const baseUrl = parts.join("/"); // Get "https://cleanuri.com"
+
+  // Keep the first 3 characters and add stars
+  const maskedSlug = slug.slice(0, 3) + "***";
+
+  return `${baseUrl}/${maskedSlug}`;
+};
 
 // API call
 async function getLink(link) {
@@ -43,9 +56,11 @@ export default function App() {
     }
   }, []);
 
-  // Update localStorage whenever results change
+  // Update localStorage ONLY if there are results & the results got changed
   useEffect(() => {
-    localStorage.setItem("shortenedLinks", JSON.stringify(results));
+    if (results.length > 0) {
+      localStorage.setItem("shortenedLinks", JSON.stringify(results));
+    }
   }, [results]);
 
   async function handleSubmit(e) {
@@ -78,7 +93,7 @@ export default function App() {
       await new Promise((res) => setTimeout(res, 2000));
 
       const data = await getLink(link);
-      setResults((prev) => [...prev, { original: link, shortened: data.result_url }]);
+      setResults((prev) => [...prev, { original: link, shortened: maskLink(data.result_url) }]);
       inputRef.current.value = "";
     } catch (err) {
       setError(err.message);
@@ -88,7 +103,7 @@ export default function App() {
   }
 
   function handleCopy(url, index) {
-    navigator.clipboard.writeText(`**${url}**`); // do not visit page
+    navigator.clipboard.writeText(url); // do not visit page
     setCopiedIndex(index);
   }
 
@@ -96,6 +111,7 @@ export default function App() {
     setResults((prev) => {
       const updated = prev.filter((_, i) => i !== index);
       localStorage.setItem("results", JSON.stringify(updated));
+      localStorage.setItem("shortenedLinks", JSON.stringify(updated));
       return updated;
     });
     copiedIndex == index ? setCopiedIndex(null) : 0;
@@ -103,7 +119,7 @@ export default function App() {
 
   return (
     <div className="app-wrapper">
-      <form className="app-form" onSubmit={handleSubmit}>
+      <form className="app-form" onSubmit={handleSubmit} id="app">
         <div className="input-wrapper">
           <input ref={inputRef} type="text" name="link" className="form-box" placeholder="Shorten a link here..." />
           <span className="error-msg">{error}</span>
@@ -118,10 +134,9 @@ export default function App() {
           <div className="result-box" key={item.shortened}>
             <div className="links-wrapper">
               <span className="original-link">{item.original}</span>
-              {/* do not visit page */}
-              <a href={`**${item.shortened}**`} target="_blank" className="shorten-link">
-                {`**${item.shortened}**`}
-              </a>
+              <Link href="/resources" className="shorten-link">
+                {item.shortened}
+              </Link>
             </div>
 
             <div className="result-actions">

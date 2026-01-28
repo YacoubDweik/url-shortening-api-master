@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Navbar from "./Navbar";
-import Home from "../page";
 
 function Header() {
   return (
