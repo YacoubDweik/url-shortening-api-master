@@ -5,7 +5,7 @@
 
 .features-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   justify-items: center;
   margin: 1rem 0;
 }

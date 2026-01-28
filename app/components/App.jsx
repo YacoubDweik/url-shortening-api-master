@@ -75,7 +75,7 @@ export default function App() {
     }
 
     if (!isValidURL(link)) {
-      setError("Invalid URL! Include protocol (http/https) and no query strings.");
+      setError("Invalid URL!");
       return;
     }
 
@@ -121,7 +121,7 @@ export default function App() {
     <div className="app-wrapper">
       <form className="app-form" onSubmit={handleSubmit} id="app">
         <div className="input-wrapper">
-          <input ref={inputRef} type="text" name="link" className="form-box" placeholder="Shorten a link here..." />
+          <input ref={inputRef} type="text" name="link" className="form-box" placeholder="https://www.abc.com/" />
           <span className="error-msg">{error}</span>
         </div>
         <button type="submit" className={`form-submit ${isGenerating ? "loading" : ""}`} disabled={isGenerating}>

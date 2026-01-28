@@ -17,21 +17,31 @@ function Navbar() {
       <nav className={`container main-nav ${isExpanded ? "active" : ""}`}>
         <ul className="main-header-list-one">
           <li className="list-item">
-            <Link href="/features">Features</Link>
+            <Link href="/features" onClick={() => setIsExpanded(false)}>
+              Features
+            </Link>
           </li>
           <li className="list-item">
-            <Link href="/prices">Prices</Link>
+            <Link href="/prices" onClick={() => setIsExpanded(false)}>
+              Prices
+            </Link>
           </li>
           <li className="list-item">
-            <Link href="/resources">Resources</Link>
+            <Link href="/resources" onClick={() => setIsExpanded(false)}>
+              Resources
+            </Link>
           </li>
         </ul>
         <ul className="main-header-list-two">
           <li className="list-item">
-            <Link href="#app">Login</Link>
+            <Link href="#app" onClick={() => setIsExpanded(false)}>
+              Login
+            </Link>
           </li>
           <li className="list-btn">
-            <Link href="#app">Sign Up</Link>
+            <Link href="#app" onClick={() => setIsExpanded(false)}>
+              Sign Up
+            </Link>
           </li>
         </ul>
       </nav>
