@@ -24,7 +24,7 @@ const maskLink = (link) => {
 // API call
 async function getLink(link) {
   try {
-    const res = await fetch("https://corsproxy.io/?url=https://cleanuri.com/api/v1/shorten", {
+    const res = await fetch("https://cleanuri.com/api/v1/shorten", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({ url: link }),
