@@ -24,10 +24,11 @@ const maskLink = (link) => {
 // API call
 async function getLink(link) {
   try {
-    const res = await fetch("https://corsproxy.io/?url=https://cleanuri.com/api/v1/shorten", {
+    // "https://corsproxy.io/?url=https://cleanuri.com/api/v1/shorten"
+    await fetch("/api/shorten", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ url: link }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: link }),
     });
 
     if (!res.ok) {
